@@ -5,6 +5,9 @@
 #define W (GameObject::Width)
 
 
+
+int GHOST_RELEASE_TIME[] = {0, 200, 400, 600};
+
 Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     : QGraphicsScene(x, y, W * map_w, W * map_h)
 {
@@ -12,7 +15,7 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
     geo_y = y;
     stat = Playing;
 
-    /* Initialize map pointers */
+
     map_size = map_w * map_h;
     map_width = map_w;
     map_height = map_h;
@@ -23,7 +26,7 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
             map[i][j] = nullptr;
     }
 
-
+    /* Initialize map graphics */
     ball_num = eat_num = score = 0;
     int ghost_i = 0;
     QPixmap wallpix(":/game_objects/map_objects/wall.png");
@@ -82,6 +85,17 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
                 map[i][j] = pacman;
                 break;
             case 'g':
+                map[i][j] = new GameObject(GameObject::Blank, blankpix);
+                ghost[ghost_i] = new Ghost(ghost_i);
+                ghost[ghost_i]->game = this;
+                ghost[ghost_i]->setZValue(2);
+                ghost[ghost_i]->release_time = GHOST_RELEASE_TIME[ghost_i];
+                ghost[ghost_i]->_x = j;
+                ghost[ghost_i]->_y = i;
+                ghost[ghost_i]->set_score(GHOST_SCORE);
+                ghost[ghost_i]->setPos(tmp_x, tmp_y);
+                addItem(ghost[ghost_i]);
+                ghost_i++;
                 break;
             }
             if (map[i][j]) {
@@ -91,7 +105,10 @@ Game::Game(int x, int y, int map_w, int map_h, QString map_src)
         }
     }
 
-
+    ghost[Ghost::Red]->chase_strategy = &strategy1;
+    ghost[Ghost::Pink]->chase_strategy = &strategy2;
+    ghost[Ghost::Green]->chase_strategy = &strategy3;
+    ghost[Ghost::Yellow]->chase_strategy = &strategy4;
 }
 
 
@@ -153,7 +170,13 @@ void Game::pacman_handler()
 }
 
 
-
+void Game::ghost_handler(int ghost_id)
+{
+    ghost[ghost_id]->move();
+    if (stat == Lose) {
+        stop();
+    }
+}
 
 
 void Game::pacman_next_direction(GameObject::Dir d)

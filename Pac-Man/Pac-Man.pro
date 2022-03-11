@@ -9,15 +9,19 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chasing_strategy.cpp \
     game.cpp \
     gameobject.cpp \
+    ghost.cpp \
     main.cpp \
     mainwindow.cpp \
     pacman.cpp
 
 HEADERS += \
+    chasing_strategy.h \
     game.h \
     gameobject.h \
+    ghost.h \
     mainwindow.h \
     pacman.h
 
@@ -30,5 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    imagenes.qrc \
     resources.qrc

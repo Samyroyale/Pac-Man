@@ -49,27 +49,30 @@ OBJECTS_DIR   = release
 
 SOURCES       = ..\Pac-Man\game.cpp \
 		..\Pac-Man\gameobject.cpp \
+		..\Pac-Man\ghost.cpp \
 		..\Pac-Man\main.cpp \
 		..\Pac-Man\mainwindow.cpp \
-		..\Pac-Man\pacman.cpp release\qrc_imagenes.cpp \
-		release\qrc_resources.cpp \
+		..\Pac-Man\pacman.cpp release\qrc_resources.cpp \
 		release\moc_game.cpp \
 		release\moc_mainwindow.cpp
 OBJECTS       = release\game.obj \
 		release\gameobject.obj \
+		release\ghost.obj \
 		release\main.obj \
 		release\mainwindow.obj \
 		release\pacman.obj \
-		release\qrc_imagenes.obj \
 		release\qrc_resources.obj \
 		release\moc_game.obj \
 		release\moc_mainwindow.obj
 
-DIST          =  ..\Pac-Man\game.h \
+DIST          =  ..\Pac-Man\chasing_strategy.h \
+		..\Pac-Man\game.h \
 		..\Pac-Man\gameobject.h \
+		..\Pac-Man\ghost.h \
 		..\Pac-Man\mainwindow.h \
 		..\Pac-Man\pacman.h ..\Pac-Man\game.cpp \
 		..\Pac-Man\gameobject.cpp \
+		..\Pac-Man\ghost.cpp \
 		..\Pac-Man\main.cpp \
 		..\Pac-Man\mainwindow.cpp \
 		..\Pac-Man\pacman.cpp
@@ -149,7 +152,7 @@ all: Makefile.Release  release\Pac-Man.exe
 
 release\Pac-Man.exe: ui_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\game.obj release\gameobject.obj release\main.obj release\mainwindow.obj release\pacman.obj release\qrc_imagenes.obj release\qrc_resources.obj release\moc_game.obj release\moc_mainwindow.obj
+release\game.obj release\gameobject.obj release\ghost.obj release\main.obj release\mainwindow.obj release\pacman.obj release\qrc_resources.obj release\moc_game.obj release\moc_mainwindow.obj
 $(LIBS)
 <<
 
@@ -159,10 +162,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Pac-Man.zip $(SOURCES) $(DIST) ..\Pac-Man\Pac-Man.pro C:\qt\5.12.2\msvc2015_64\mkspecs\features\spec_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\common\angle.conf C:\qt\5.12.2\msvc2015_64\mkspecs\common\windows-vulkan.conf C:\qt\5.12.2\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\qt\5.12.2\msvc2015_64\mkspecs\qconfig.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_charts.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_charts_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_datavisualization.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_networkauth.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_purchasing.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_script.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt_functions.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt_config.prf C:\qt\5.12.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf C:\qt\5.12.2\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash C:\qt\5.12.2\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\qt\5.12.2\msvc2015_64\mkspecs\common\msvc-version.conf C:\qt\5.12.2\msvc2015_64\mkspecs\features\toolchain.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\default_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\default_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\resolve_config.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\default_post.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\build_pass.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qml_debug.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\precompile_header.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\warn_on.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\resources.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\moc.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\opengl.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\uic.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qmake_use.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\file_copies.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\windows.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\testcase_targets.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\exceptions.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\yacc.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\lex.prf ..\Pac-Man\Pac-Man.pro imagenes.qrc ..\Pac-Man\resources.qrc C:\qt\5.12.2\msvc2015_64\lib\Qt5Widgets.prl C:\qt\5.12.2\msvc2015_64\lib\Qt5Gui.prl C:\qt\5.12.2\msvc2015_64\lib\Qt5Core.prl C:\qt\5.12.2\msvc2015_64\lib\qtmain.prl   imagenes.qrc ..\Pac-Man\resources.qrc C:\qt\5.12.2\msvc2015_64\mkspecs\features\data\dummy.cpp ..\Pac-Man\game.h ..\Pac-Man\gameobject.h ..\Pac-Man\mainwindow.h ..\Pac-Man\pacman.h  ..\Pac-Man\game.cpp ..\Pac-Man\gameobject.cpp ..\Pac-Man\main.cpp ..\Pac-Man\mainwindow.cpp ..\Pac-Man\pacman.cpp ..\Pac-Man\mainwindow.ui    
+	$(ZIP) Pac-Man.zip $(SOURCES) $(DIST) ..\Pac-Man\Pac-Man.pro C:\qt\5.12.2\msvc2015_64\mkspecs\features\spec_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\common\angle.conf C:\qt\5.12.2\msvc2015_64\mkspecs\common\windows-vulkan.conf C:\qt\5.12.2\msvc2015_64\mkspecs\common\msvc-desktop.conf C:\qt\5.12.2\msvc2015_64\mkspecs\qconfig.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3drender.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_3drender_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axbase.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axbase_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axserver.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_axserver_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_charts.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_charts_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_core.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_core_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_datavisualization.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_dbus.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_dbus_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designer.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designer_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gui.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_gui_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_help.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_help_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_location.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_location_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_network.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_network_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_networkauth.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_nfc.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_nfc_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_opengl.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_opengl_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioning.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioning_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_purchasing.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quick.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quick_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_repparser.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_repparser_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_script.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_script_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scripttools.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scxml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_scxml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sensors.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sensors_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialport.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_serialport_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sql.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_sql_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_svg.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_svg_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_testlib.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_testlib_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uiplugin.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uitools.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_uitools_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_websockets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_websockets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webview.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_webview_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_widgets.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_widgets_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_winextras.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_winextras_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xml.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xml_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\modules\qt_lib_zlib_private.pri C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt_functions.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt_config.prf C:\qt\5.12.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf C:\qt\5.12.2\msvc2015_64\mkspecs\features\spec_post.prf .qmake.stash C:\qt\5.12.2\msvc2015_64\mkspecs\features\exclusive_builds.prf C:\qt\5.12.2\msvc2015_64\mkspecs\common\msvc-version.conf C:\qt\5.12.2\msvc2015_64\mkspecs\features\toolchain.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\default_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\default_pre.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\resolve_config.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\exclusive_builds_post.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\default_post.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\build_pass.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qml_debug.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\precompile_header.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\warn_on.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qt.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\resources.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\moc.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\opengl.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\uic.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\qmake_use.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\file_copies.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\win32\windows.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\testcase_targets.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\exceptions.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\yacc.prf C:\qt\5.12.2\msvc2015_64\mkspecs\features\lex.prf ..\Pac-Man\Pac-Man.pro ..\Pac-Man\resources.qrc C:\qt\5.12.2\msvc2015_64\lib\Qt5Widgets.prl C:\qt\5.12.2\msvc2015_64\lib\Qt5Gui.prl C:\qt\5.12.2\msvc2015_64\lib\Qt5Core.prl C:\qt\5.12.2\msvc2015_64\lib\qtmain.prl   ..\Pac-Man\resources.qrc C:\qt\5.12.2\msvc2015_64\mkspecs\features\data\dummy.cpp ..\Pac-Man\chasing_strategy.h ..\Pac-Man\game.h ..\Pac-Man\gameobject.h ..\Pac-Man\ghost.h ..\Pac-Man\mainwindow.h ..\Pac-Man\pacman.h  ..\Pac-Man\game.cpp ..\Pac-Man\gameobject.cpp ..\Pac-Man\ghost.cpp ..\Pac-Man\main.cpp ..\Pac-Man\mainwindow.cpp ..\Pac-Man\pacman.cpp ..\Pac-Man\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\game.obj release\gameobject.obj release\main.obj release\mainwindow.obj release\pacman.obj release\qrc_imagenes.obj release\qrc_resources.obj release\moc_game.obj release\moc_mainwindow.obj
+	-$(DEL_FILE) release\game.obj release\gameobject.obj release\ghost.obj release\main.obj release\mainwindow.obj release\pacman.obj release\qrc_resources.obj release\moc_game.obj release\moc_mainwindow.obj
 	-$(DEL_FILE) release\Pac-Man.exp
 
 distclean: clean 
@@ -180,13 +183,9 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
-compiler_rcc_make_all: release\qrc_imagenes.cpp release\qrc_resources.cpp
+compiler_rcc_make_all: release\qrc_resources.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) release\qrc_imagenes.cpp release\qrc_resources.cpp
-release\qrc_imagenes.cpp: imagenes.qrc \
-		C:\qt\5.12.2\msvc2015_64\bin\rcc.exe
-	C:\qt\5.12.2\msvc2015_64\bin\rcc.exe -name imagenes imagenes.qrc -o release\qrc_imagenes.cpp
-
+	-$(DEL_FILE) release\qrc_resources.cpp
 release\qrc_resources.cpp: ..\Pac-Man\resources.qrc \
 		C:\qt\5.12.2\msvc2015_64\bin\rcc.exe \
 		..\Pac-Man\game_objects\map_objects\wall.png \
@@ -195,6 +194,41 @@ release\qrc_resources.cpp: ..\Pac-Man\resources.qrc \
 		..\Pac-Man\game_objects\map_objects\gate.png \
 		..\Pac-Man\game_objects\map_objects\map.txt \
 		..\Pac-Man\game_objects\map_objects\power_ball.png \
+		..\Pac-Man\game_objects\ghosts\yellowup1.png \
+		..\Pac-Man\game_objects\ghosts\yellowup2.png \
+		..\Pac-Man\game_objects\ghosts\greenup1.png \
+		..\Pac-Man\game_objects\ghosts\greenup2.png \
+		..\Pac-Man\game_objects\ghosts\pinkdown1.png \
+		..\Pac-Man\game_objects\ghosts\greendown1.png \
+		..\Pac-Man\game_objects\ghosts\pinkdown2.png \
+		..\Pac-Man\game_objects\ghosts\greendown2.png \
+		..\Pac-Man\game_objects\ghosts\pinkright1.png \
+		..\Pac-Man\game_objects\ghosts\redright1.png \
+		..\Pac-Man\game_objects\ghosts\pinkright2.png \
+		..\Pac-Man\game_objects\ghosts\reddown1.png \
+		..\Pac-Man\game_objects\ghosts\redright2.png \
+		..\Pac-Man\game_objects\ghosts\yellowdown1.png \
+		..\Pac-Man\game_objects\ghosts\reddown2.png \
+		..\Pac-Man\game_objects\ghosts\yellowdown2.png \
+		..\Pac-Man\game_objects\ghosts\greenright1.png \
+		..\Pac-Man\game_objects\ghosts\yellowright1.png \
+		..\Pac-Man\game_objects\ghosts\pinkup1.png \
+		..\Pac-Man\game_objects\ghosts\pinkleft1.png \
+		..\Pac-Man\game_objects\ghosts\greenright2.png \
+		..\Pac-Man\game_objects\ghosts\yellowright2.png \
+		..\Pac-Man\game_objects\ghosts\greenleft1.png \
+		..\Pac-Man\game_objects\ghosts\pinkleft2.png \
+		..\Pac-Man\game_objects\ghosts\pinkup2.png \
+		..\Pac-Man\game_objects\ghosts\greenleft2.png \
+		..\Pac-Man\game_objects\ghosts\redleft1.png \
+		..\Pac-Man\game_objects\ghosts\yellowleft1.png \
+		..\Pac-Man\game_objects\ghosts\redleft2.png \
+		..\Pac-Man\game_objects\ghosts\redup1.png \
+		..\Pac-Man\game_objects\ghosts\yellowleft2.png \
+		..\Pac-Man\game_objects\ghosts\redup2.png \
+		..\Pac-Man\game_objects\ghosts\bl1.png \
+		..\Pac-Man\game_objects\ghosts\run.png \
+		..\Pac-Man\game_objects\ghosts\bl2.png \
 		..\Pac-Man\game_objects\pacman\a2.png \
 		..\Pac-Man\game_objects\pacman\a3.png \
 		..\Pac-Man\game_objects\pacman\a4.png \
@@ -756,7 +790,267 @@ release\gameobject.obj: ..\Pac-Man\gameobject.cpp ..\Pac-Man\game.h \
 		..\Pac-Man\gameobject.h \
 		C:\qt\5.12.2\msvc2015_64\include\QtCore\QVector
 
-release\main.obj: ..\Pac-Man\main.cpp 
+release\ghost.obj: ..\Pac-Man\ghost.cpp ..\Pac-Man\game.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsView \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsview.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtguiglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qconfig.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtcore-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlogging.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qflags.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmutex.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtgui-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpainter.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qrect.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmargins.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsize.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qpoint.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qcolor.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qrgb.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qiterator.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstring.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qchar.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringliteral.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringalgorithms.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringview.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qpair.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qregexp.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qhash.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobject.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qimage.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtransform.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvector.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qregion.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qline.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpainterpath.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtextoption.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpen.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qbrush.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfont.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qscrollarea.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpalette.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qcursor.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qevent.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvariant.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qdebug.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlocale.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qset.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qurl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qfile.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsscene.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsScene \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsItem \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsitem.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QTimer \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbasictimer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QPair \
+		..\Pac-Man\gameobject.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QVector \
+		..\Pac-Man\chasing_strategy.cpp \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QRandomGenerator \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qrandom.h
+
+release\main.obj: ..\Pac-Man\main.cpp ..\Pac-Man\mainwindow.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QMainWindow \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qmainwindow.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtguiglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qglobal.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qconfig.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtcore-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlogging.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qflags.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmutex.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtgui-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qtwidgets-config.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qwidget.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qwindowdefs.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qwindowdefs_win.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobject.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstring.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qchar.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringliteral.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringalgorithms.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringview.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qiterator.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qpair.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qregexp.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmargins.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpaintdevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qrect.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsize.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qpoint.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpalette.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qcolor.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qrgb.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qrgba64.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qbrush.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvector.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qmatrix.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpolygon.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qregion.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qdatastream.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qline.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtransform.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpainterpath.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qimage.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpixelformat.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpixmap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qhash.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfont.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfontmetrics.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qfontinfo.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qsizepolicy.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qcursor.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qkeysequence.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qevent.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qvariant.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qmap.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qdebug.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qlocale.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qset.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qurl.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qurlquery.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qfile.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qfiledevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qvector2d.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtouchdevice.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qicon.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QLabel \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qlabel.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qframe.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\QKeyEvent \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QTimer \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qtimer.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qbasictimer.h \
+		..\Pac-Man\game.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsView \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsview.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpainter.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qtextoption.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qpen.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qscrollarea.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsscene.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsScene \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QGraphicsItem \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qgraphicsitem.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QPair \
+		..\Pac-Man\gameobject.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\QVector \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QApplication \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qapplication.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qcoreapplication.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtCore\qeventloop.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qguiapplication.h \
+		C:\qt\5.12.2\msvc2015_64\include\QtGui\qinputmethod.h
 
 release\mainwindow.obj: ..\Pac-Man\mainwindow.cpp ..\Pac-Man\mainwindow.h \
 		C:\qt\5.12.2\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -1010,8 +1304,6 @@ release\pacman.obj: ..\Pac-Man\pacman.cpp ..\Pac-Man\game.h \
 		C:\qt\5.12.2\msvc2015_64\include\QtCore\QPair \
 		..\Pac-Man\gameobject.h \
 		C:\qt\5.12.2\msvc2015_64\include\QtCore\QVector
-
-release\qrc_imagenes.obj: release\qrc_imagenes.cpp 
 
 release\qrc_resources.obj: release\qrc_resources.cpp 
 

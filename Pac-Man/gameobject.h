@@ -8,11 +8,11 @@
 #include <QVector>
 
 
-/* Predefine the game object */
+
 class Game;
 
 
-/* Base class of ghosts, pacman */
+
 class GameObject : public QGraphicsPixmapItem
 {
 public:
@@ -33,12 +33,12 @@ public:
     Dir get_next_dir();
 
     friend class Game;
-
+    friend class Ghost;
 
 protected:
-    int _x, _y;                 // coordinate in map
-    Dir dir;                    // current moving direction
-    Dir next_dir;               // next direction by w, a, s, d key
+    int _x, _y;
+    Dir dir;
+    Dir next_dir;
     ObjectType type;
     int score;
 };
@@ -50,7 +50,7 @@ class Pacman : public GameObject
 public:
     Pacman();
     void move();
-    Game *game;                 // the pacman game object
+    Game *game;
 
     friend class Game;
 
@@ -60,13 +60,28 @@ private:
     void moveleft();
     void moveright();
     void eat_ball(int, int);
-    bool overlapable(int, int); // check if pacman can go to map[i][j]
+    bool overlapable(int, int);
 
-    QVector<QPixmap> anim[4];   // animations
+    QVector<QPixmap> anim[4];
     int anim_index;
 };
 
 
+
+class Ghost : public GameObject
+{
+public:
+    enum Color {Red = 0, Yellow = 1, Pink = 2, Green = 3};
+    enum Status {Normal, Panic, Running};
+    const static int GhostNum = 4;
+    Game *game;
+
+    Ghost(int);
+    void move();
+    Color get_color();
+
+    friend class Game;
+    friend class Pacman;
 
 private:
     void moveup();
@@ -79,19 +94,23 @@ private:
     void chase_pacman();
     void dodge_pacman();
     void go_to_cage();
-     // function pointer of a chasing stragety
-    bool overlapable(int, int);                 // check if ghost can go to map[i][j]
+    QPair<int, int> (*chase_strategy)(Ghost*);
+    bool overlapable(int, int);
 
     Color color;
     Status status;
-    QVector<QPixmap> anim[4];                   // animations
+    QVector<QPixmap> anim[4];
     QVector<QPixmap> panic_anim;
     QVector<QPixmap> running_anim;
     int anim_index;
-    int release_time;           // time to get out the cage
+    int release_time;
     bool is_released;
     int panic_time;
 };
 
+QPair<int, int> strategy1(Ghost*);
+QPair<int, int> strategy2(Ghost*);
+QPair<int, int> strategy3(Ghost*);
+QPair<int, int> strategy4(Ghost*);
 
 #endif // GAMEOBJECT_H

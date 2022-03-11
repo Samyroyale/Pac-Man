@@ -1,5 +1,40 @@
 <RCC>
     <qresource prefix="/">
+        <file>game_objects/ghosts/bl1.png</file>
+        <file>game_objects/ghosts/bl2.png</file>
+        <file>game_objects/ghosts/greendown1.png</file>
+        <file>game_objects/ghosts/greendown2.png</file>
+        <file>game_objects/ghosts/greenleft1.png</file>
+        <file>game_objects/ghosts/greenleft2.png</file>
+        <file>game_objects/ghosts/greenright1.png</file>
+        <file>game_objects/ghosts/greenright2.png</file>
+        <file>game_objects/ghosts/greenup1.png</file>
+        <file>game_objects/ghosts/greenup2.png</file>
+        <file>game_objects/ghosts/pinkdown1.png</file>
+        <file>game_objects/ghosts/pinkdown2.png</file>
+        <file>game_objects/ghosts/pinkleft1.png</file>
+        <file>game_objects/ghosts/pinkleft2.png</file>
+        <file>game_objects/ghosts/pinkright1.png</file>
+        <file>game_objects/ghosts/pinkright2.png</file>
+        <file>game_objects/ghosts/pinkup1.png</file>
+        <file>game_objects/ghosts/pinkup2.png</file>
+        <file>game_objects/ghosts/reddown1.png</file>
+        <file>game_objects/ghosts/reddown2.png</file>
+        <file>game_objects/ghosts/redleft1.png</file>
+        <file>game_objects/ghosts/redleft2.png</file>
+        <file>game_objects/ghosts/redright1.png</file>
+        <file>game_objects/ghosts/redright2.png</file>
+        <file>game_objects/ghosts/redup1.png</file>
+        <file>game_objects/ghosts/redup2.png</file>
+        <file>game_objects/ghosts/run.png</file>
+        <file>game_objects/ghosts/yellowdown1.png</file>
+        <file>game_objects/ghosts/yellowdown2.png</file>
+        <file>game_objects/ghosts/yellowleft1.png</file>
+        <file>game_objects/ghosts/yellowleft2.png</file>
+        <file>game_objects/ghosts/yellowright1.png</file>
+        <file>game_objects/ghosts/yellowright2.png</file>
+        <file>game_objects/ghosts/yellowup1.png</file>
+        <file>game_objects/ghosts/yellowup2.png</file>
         <file>game_objects/map_objects/dot.png</file>
         <file>game_objects/map_objects/dotb.png</file>
         <file>game_objects/map_objects/gate.png</file>
